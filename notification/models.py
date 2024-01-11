@@ -24,7 +24,7 @@ class Blog(models.Model):
 
 class Notification(models.Model):
 
-    sender = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    receiver = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     message = models.TextField()
     is_read = models.BooleanField(default=False)
     timestamp = models.DateTimeField(auto_now=True)

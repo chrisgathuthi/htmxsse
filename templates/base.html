@@ -18,7 +18,7 @@
     <header>
         {% include "components/navigation.html" %}
     </header>
-    <main class="px-10 mt-20">
+    <main class="px-10 mt-20" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
         {% block main %}
         {% endblock main %}
     </main>
