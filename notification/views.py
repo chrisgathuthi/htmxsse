@@ -28,7 +28,8 @@ class Blog(View):
 class Notification(View):
     @staticmethod
     def event_stream(request):
-        notifications = Message.objects.filter(is_read=False,receiver=request.user)
+        print(request.user)
+        notifications = Message.objects.filter(is_read=False).filter(receiver=request.user)
         if len(notifications) >= 1:
             for notices in notifications:
                 html = render_to_string(
@@ -44,7 +45,6 @@ class Notification(View):
         return response
     
     def post(self, request):
-        pprint.pprint(request.META)
         notification = Message.objects.get(id=request.POST["id"])
         notification.is_read = True
         notification.save()

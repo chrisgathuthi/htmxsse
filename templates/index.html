@@ -24,7 +24,7 @@
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{blog.content}}</p>
             <div class="inline-flex justify-between w-20 ">
                 <button class="h-10" hx-post="{% url 'home' %}"  hx-vals='{"id":"{{blog.id}}", "sentiment":"like"}'><i class="fa-solid fa-thumbs-up text-3xl"></i></button>
-                <button class="h-10" hx-vals='{"id":"{{blog.id}}", "sentiment":"dislike"}'><i class="fa-solid fa-thumbs-down text-3xl"></i></button>
+                <button class="h-10" hx-post="{% url 'home' %}" hx-vals='{"id":"{{blog.id}}", "sentiment":"dislike"}'><i class="fa-solid fa-thumbs-down text-3xl"></i></button>
             </div>
         </div>
     </div>

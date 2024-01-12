@@ -1,1 +1,1 @@
-<button class="h-10" hx-post="{% url 'home' %}" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' hx-vals='{"id":"{{blog.id}}", "sentiment":"like"}'><i class="fa-solid fa-thumbs-up text-3xl text-red"></i></button>
+<button class="h-10" hx-post="{% url 'home' %}" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' hx-vals='{"id":"{{blog.id}}", "sentiment":"like"}'><i class="fa-solid fa-thumbs-up text-3xl" style="color: red;"></i></button>

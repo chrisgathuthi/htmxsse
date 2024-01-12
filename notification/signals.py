@@ -5,7 +5,7 @@ from .models import Notification, Reaction
 
 @receiver(post_save, sender=Reaction)
 def create_notification(instance, sender, created, **kwargs):
-    print("called")
+    blog = instance.blog_set.last()
     if created:
         Notification.objects.create(
             receiver=instance.user,
