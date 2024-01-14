@@ -3,6 +3,13 @@ from django.contrib.auth import get_user_model
 # Create your models here.
 
 
+
+class Blog(models.Model):
+
+    title = models.CharField(max_length=20)
+    content = models.TextField()
+    writer = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+
 class Reaction(models.Model):
 
     class Sentiment(models.TextChoices):
@@ -11,15 +18,7 @@ class Reaction(models.Model):
 
     sentiment = models.CharField(max_length=8, choices=Sentiment)
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-
-
-class Blog(models.Model):
-
-    title = models.CharField(max_length=20)
-    content = models.TextField()
-    writer = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-    reaction = models.ForeignKey(
-        Reaction, on_delete=models.SET_NULL, null=True, blank=True)
+    blog = models.ForeignKey(Blog,on_delete=models.CASCADE)
 
 
 class Notification(models.Model):

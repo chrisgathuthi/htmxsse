@@ -4,3 +4,4 @@ from .models import Notification, Blog, Reaction
 
 admin.site.register(Blog)
 admin.site.register(Notification)
+admin.site.register(Reaction)

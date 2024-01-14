@@ -7,18 +7,16 @@ from django.template.loader import render_to_string
 from django.db import transaction
 # Create your views here.
 
-import pprint
+
 class Blog(View):
 
     def get(self, request):
         blog = Posts.objects.all()
         return render(request, "index.html", {"blogs": blog})
     
-    def post(self, request):    
-        sentiment = Reaction.objects.create(sentiment=request.POST["sentiment"], user=self.request.user)
-        blog = Posts.objects.get(id=request.POST["id"])    
-        blog.reaction = sentiment
-        blog.save()
+    def post(self, request): 
+        blog = Posts.objects.get(id=request.POST["id"])   
+        sentiment = Reaction.objects.create(sentiment=request.POST["sentiment"], user=self.request.user, blog=blog)
         if sentiment.sentiment == "like":
             return render(request, "components/like.html")
         else:            
